@@ -46,8 +46,9 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              
+              <Route path="/signup" element={<SignUp />} />
             </Routes>
           </div>
         </div>
