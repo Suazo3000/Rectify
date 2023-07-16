@@ -5,7 +5,7 @@ import { ADD_THERAPIST } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const TherapistSelection = () => {
+const Therapists = ({ setIsLoggedIn }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null); // Updated state variable
 
   const [addTherapists, { error, data }] = useMutation(ADD_THERAPIST);
@@ -24,7 +24,7 @@ const TherapistSelection = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(selectedTherapist); // Log the selected therapist
+    console.log('Selected Therapist:', selectedTherapist); // Log the selected therapist
 
     if (selectedTherapist) {
       try {
@@ -33,6 +33,8 @@ const TherapistSelection = () => {
 
         // Example: Login the user with the selected therapist
         Auth.login(selectedTherapist.name);
+
+        setIsLoggedIn(true);
       } catch (e) {
         console.error(e);
       }
@@ -86,4 +88,4 @@ const TherapistSelection = () => {
   );
 };
 
-export default TherapistSelection;
+export default Therapists;

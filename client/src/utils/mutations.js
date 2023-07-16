@@ -24,3 +24,12 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_THERAPIST = gql`
+  mutation addTherapist($name: String!) {
+    addTherapist(name: $name) {
+      _id
+      name
+    }
+  }
+`;
+

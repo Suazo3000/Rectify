@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -10,8 +10,10 @@ import { setContext } from '@apollo/client/link/context';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Therapists from './pages/Therapists';
 
 import Header from './components/Header';
+import Auth from './utils/auth';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -38,16 +40,25 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
+
+  const handleLogout = () => {
+    Auth.logout();
+    setIsLoggedIn(false); // Set isLoggedIn state to false
+  };
+  
   return (
-     <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <Router>
-      <div className="flex-column justify-flex-start min-100-vh">
+        <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
             <Routes>
-              <Route path="/login" element={<Login />} />
               
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
+              <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
+              <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} 
+              />
             </Routes>
           </div>
         </div>
@@ -57,3 +68,4 @@ function App() {
 }
 
 export default App;
+
