@@ -58,7 +58,7 @@ const Therapists = ({ setIsLoggedIn }) => {
                   }`}
                   onClick={() => handleTherapistSelection(therapist)}
                 >
-                  {therapist.name}
+                  <Link to={`/Profile/${therapist.id}`}>{therapist.name}</Link>
                 </li>
               ))}
             </ul>

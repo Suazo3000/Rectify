@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Therapists from './pages/Therapists';
+import Profile from './pages/Profile';
 
 import Header from './components/Header';
 import Auth from './utils/auth';
@@ -57,8 +58,8 @@ function App() {
               
               <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
-              <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} 
-              />
+              <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
+              <Route path="/profile/:therapistId" element={<Profile />} />
             </Routes>
           </div>
         </div>
