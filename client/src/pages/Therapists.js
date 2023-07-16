@@ -61,6 +61,8 @@ const Therapists = ({ setIsLoggedIn }) => {
                       : ""
                   }`}
                   onClick={() => handleTherapistSelection(therapist)}
+                  onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
                   style={{
                     cursor: "pointer",
                   }}
