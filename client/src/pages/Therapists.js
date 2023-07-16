@@ -63,7 +63,7 @@ const Therapists = ({ setIsLoggedIn }) => {
               ))}
             </ul>
 
-            <form onSubmit={handleFormSubmit}>
+            {/* <form onSubmit={handleFormSubmit}>
               <button
                 className="btn btn-block btn-primary mt-3"
                 style={{ cursor: 'pointer' }}
@@ -72,7 +72,7 @@ const Therapists = ({ setIsLoggedIn }) => {
               >
                 Select
               </button>
-            </form>
+            </form> */}
 
             {selectedTherapist && (
               <div className="mt-3">
