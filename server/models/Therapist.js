@@ -13,6 +13,10 @@ const therapistSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    Bio: {
+        type: String,
+        required: true, 
+    },
 });
 
 const Therapist = mongoose.model('Therapist', therapistSchema);
