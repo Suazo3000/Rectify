@@ -63,16 +63,7 @@ const Therapists = ({ setIsLoggedIn }) => {
               ))}
             </ul>
 
-            <form onSubmit={handleFormSubmit}>
-              <button
-                className="btn btn-block btn-primary mt-3"
-                style={{ cursor: 'pointer' }}
-                type="submit"
-                disabled={!selectedTherapist}
-              >
-                Select
-              </button>
-            </form>
+            
 
             {selectedTherapist && (
               <div className="mt-3">
