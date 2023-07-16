@@ -65,10 +65,11 @@ const Therapists = ({ setIsLoggedIn }) => {
                     cursor: "pointer",
                   }}
                 >
-                  {therapist.name}
+                  <Link to={`/Profile/${therapist.id}`}>{therapist.name}</Link>
                 </li>
               ))}
             </ul>
+
 
             {selectedTherapist && (
               <div className="mt-3">
