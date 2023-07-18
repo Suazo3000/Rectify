@@ -1,5 +1,5 @@
 import React from 'react';
-//import css
+import 'client/src/utils/css/AboutSection.css'
 
 const AboutSection = ({ heading, text, image, sections }) => {
     return (

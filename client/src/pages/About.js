@@ -1,4 +1,4 @@
-//import styling
+import 'client/src/utils/css/About.css'
 import helpingHand from '../public/images/helping-hand.jpg';
 import handcuffs from '../public/images/Handcuffs.jpg';
 import handShake from '../public/images/handshake1.jpg';
