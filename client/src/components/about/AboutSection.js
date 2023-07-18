@@ -10,5 +10,7 @@ const AboutSection = ({ heading, text, image, sections }) => {
             </div>
             <img src={image} alt="images" className="aboutImg" />
         </section>
-    )
-}
+    );
+};
+
+export default AboutSection;
