@@ -1,5 +1,5 @@
-import 'client/src/utils/css/About.css'
-import helpingHand from '../public/images/helping-hand.jpg';
+import '../utils/css/About';
+import helpingHand from '../../public/images/helping-hand.jpg';
 import handcuffs from '../public/images/Handcuffs.jpg';
 import handShake from '../public/images/handshake1.jpg';
 import manyHands from '../public/images/many-hands.jpg';

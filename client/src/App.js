@@ -13,6 +13,7 @@ import SignUp from './pages/SignUp';
 import Therapists from './pages/Therapists';
 import Profile from './pages/Profile';
 import Home from './pages/Home'; // Import the Home component
+import About from './pages/About';
 
 import Header from './components/Header';
 import Auth from './utils/auth';
@@ -56,6 +57,7 @@ function App() {
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
               <Route path="/profile/:therapistId" element={<Profile />} />
               <Route path="/about" element={<Therapists />} /> 
+              <Route path="/about" element={<About />} />
               <Route path="/" element={<Home />} /> 
             </Routes>
           </div>
