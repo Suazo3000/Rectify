@@ -1,22 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_THERAPIST } from "../utils/mutations";
-
+import { Box, AppBar, Toolbar, Typography, Menu, Avatar, Button, MenuItem, Stack } from "@mui/material";
 import Auth from "../utils/auth";
 
 const Therapists = ({ setIsLoggedIn }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null); // Updated state variable
+  const [therapists, setTherapists] = useState([]); // Updated state variable
+
+  useEffect(() => {
+    fetchTherapists();
+  }, []);
+
+  const fetchTherapists = async () => {
+    try {
+      const response = await fetch("/api/therapists");
+      const data = await response.json();
+      setTherapists(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const [addTherapists, { error, data }] = useMutation(ADD_THERAPIST);
 
-  const therapists = [
-    { id: 1, name: "Therapist 1" },
-    { id: 2, name: "Therapist 2" },
-    { id: 3, name: "Therapist 3" },
-    { id: 4, name: "Therapist 4" },
-    { id: 5, name: "Therapist 5" },
-  ];
+
 
   const handleTherapistSelection = (therapist) => {
     setSelectedTherapist(therapist);
@@ -24,7 +33,7 @@ const Therapists = ({ setIsLoggedIn }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Selected Therapist:", selectedTherapist); // Log the selected therapist
+    
 
     if (selectedTherapist) {
       try {
@@ -51,14 +60,15 @@ const Therapists = ({ setIsLoggedIn }) => {
           <div className="card-body">
             <p>Choose from the top five therapists:</p>
 
+            
             <ul className="list-group">
               {therapists.map((therapist) => (
-                <li
+                <li 
                   key={therapist.id}
                   className={`list-group-item ${
-                    selectedTherapist && selectedTherapist.id === therapist.id
-                      ? "active"
-                      : ""
+                    selectedTherapist && selectedTherapist.id === therapist.id 
+                    ? "active" 
+                    : ""
                   }`}
                   onClick={() => handleTherapistSelection(therapist)}
                   style={{

@@ -5,6 +5,7 @@ const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const therapistsRoutes = require('./routes/therapistsRoutes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,6 +24,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 }
+
+app.use('/api', therapistsRoutes);
 
 
 

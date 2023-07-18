@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 const therapistSchema = new mongoose.Schema({
     name: {
@@ -13,7 +13,7 @@ const therapistSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Bio: {
+    bio: {
         type: String,
         required: true, 
     },

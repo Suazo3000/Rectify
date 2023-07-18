@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Therapist = require('../models/Therapist');
 
+
 mongoose.connect('mongodb://127.0.0.1:27017/rectify', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
