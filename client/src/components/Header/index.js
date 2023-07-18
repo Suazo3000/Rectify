@@ -5,6 +5,7 @@ import Auth from "../../utils/auth";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
@@ -13,6 +14,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Stack from "@mui/material/Stack";
+import HandshakeTwoToneIcon from '@mui/icons-material/DeleteOutlined';
 
 const pages = [];
 const settings = ["Profile", "Dashboard", "Logout"];
@@ -72,7 +74,7 @@ const Header = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              {/* <MenuIcon /> */}
+              <MenuIcon />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -110,7 +112,7 @@ const Header = () => {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
+              fontWeight: 500,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -128,7 +130,20 @@ const Header = () => {
                 {page}
               </Button>
             ))}
+
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+             
           </Box>
+
           <div>
             {Auth.loggedIn() ? (
               <>
@@ -136,19 +151,19 @@ const Header = () => {
                   {/* <Link className="btn btn-lg btn-info m-2" to="/me">
                   {Auth.getProfile().data.username}'s profile
                 </Link> */}
-                  <Button variant="outline" onClick={logout}>
+                  {/* <Button variant="outline" onClick={logout}>
                     Logout
-                  </Button>
+                  </Button> */}
                 </Stack>
               </>
             ) : (
               <>
-                <Link
+                {/* <Link
                   style={{ textDecoration: "none", color: "white" }}
                   to="/login"
                 >
                   <Button variant="outline">Login</Button>
-                </Link>
+                </Link> */}
                 {/* <Link className="btn btn-lg btn-light m-2" to="/signup">
                   Signup
                 </Link> */}
@@ -160,6 +175,8 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
+
+
     // <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
     //   <Box className="container flex-row justify-space-between-lg justify-center align-center">
     //     <div>
