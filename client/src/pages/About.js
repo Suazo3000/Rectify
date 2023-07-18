@@ -29,7 +29,7 @@ const data = [
 
 const About = () => {
   return (
-    <main className="bodyContent" id="aboutContent">
+    <main className="bodyContent" id="aboutPage">
       {data.map((item, i) => {
         return (
           <AboutSection
