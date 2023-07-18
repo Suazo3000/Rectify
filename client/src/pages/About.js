@@ -1,8 +1,9 @@
-import '../utils/css/About';
-import helpingHand from '../../public/images/helping-hand.jpg';
-import handcuffs from '../public/images/Handcuffs.jpg';
-import handShake from '../public/images/handshake1.jpg';
-import manyHands from '../public/images/many-hands.jpg';
+import '../utils/css/About.css';
+import helpingHand from '../img/helping-hand.jpg';
+import handcuffs from '../img/Handcuffs.jpg';
+import handShake from '../img/handshake1.jpg';
+import manyHands from '../img/many-hands.jpg';
+import AboutSection from '../components/about/AboutSection';
 
 const data = [
   {

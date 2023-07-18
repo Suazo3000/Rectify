@@ -56,7 +56,7 @@ function App() {
               <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
               <Route path="/profile/:therapistId" element={<Profile />} />
-              <Route path="/about" element={<Therapists />} /> 
+              {/* <Route path="/about" element={<Therapists />} />  */}
               <Route path="/about" element={<About />} />
               <Route path="/" element={<Home />} /> 
             </Routes>
