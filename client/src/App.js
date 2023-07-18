@@ -50,12 +50,13 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Routes>
+          <Routes>
               <Route path="/" element={<Home />} /> 
-              <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
               <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
               <Route path="/profile/:therapistId" element={<Profile />} />
+              <Route path="/about" element={<Therapists />} /> 
+              <Route path="/" element={<Home />} /> 
             </Routes>
           </div>
         </div>
