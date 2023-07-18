@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import {Link} from "react-router-dom"
 function LandingPageButton() {
-    return <Link to="/about" class="nav-link">
+    return <Link to="/profile" class="nav-link">
         <button class="btn btn-primary" > 
             <span style={{"font-size": "24px"}}>
                 Available Therapist!
