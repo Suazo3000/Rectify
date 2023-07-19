@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 
-const Profile = ({ Therapist }) => {
-    const { therapistId } = useParams();
 
-    const therapist = {
-        id: therapistId,
-        name: 'Therapist Name',
-        specialty: 'Specialty',
-        location: 'Location',
-        bio: 'Bio',
-    };
-    
+
+const Profile = () => {
+    const { therapistId } = useParams();
+    const [therapist, setTherapist] = useState(null);
+
+    useEffect(() => {
+        const fetchTherapist = async () => {
+            try {
+                const response = await fetch(`/api/therapists/${therapistId}`);
+                const data = await response.json();
+                setTherapist(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchTherapist();
+    }, [therapistId]);
+
+
     return (
         <div>
             <h2>Profile</h2>
