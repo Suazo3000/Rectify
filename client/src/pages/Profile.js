@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
+const comments = [{
+    id: "1",
+    commentTitle: "Five stars",
+    commentBody: "I am very happy with this therapist!",
+    commenter: "Tester N."
+}]
+
 
 
 
