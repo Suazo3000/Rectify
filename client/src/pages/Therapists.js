@@ -17,13 +17,16 @@ const Therapists = ({ setIsLoggedIn }) => {
     try {
       const response = await fetch("/api/therapists");
       const data = await response.json();
+
+      console.log("Therapists data:", data);
+
       setTherapists(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const [addTherapists, { error, data }] = useMutation(ADD_THERAPIST);
+  const [addTherapist, { error, data }] = useMutation(ADD_THERAPIST);
 
 
 
@@ -64,9 +67,9 @@ const Therapists = ({ setIsLoggedIn }) => {
             <ul className="list-group">
               {therapists.map((therapist) => (
                 <li 
-                  key={therapist.id}
+                  key={therapist._id}
                   className={`list-group-item ${
-                    selectedTherapist && selectedTherapist.id === therapist.id 
+                    selectedTherapist && selectedTherapist._id === therapist._id 
                     ? "active" 
                     : ""
                   }`}
@@ -75,7 +78,7 @@ const Therapists = ({ setIsLoggedIn }) => {
                     cursor: "pointer",
                   }}
                 >
-                  <Link to={`/Profile/${therapist.id}`}>{therapist.name}</Link>
+                  <Link to={`/Profile/${therapist._id}`}>{therapist.name}</Link>
                 </li>
               ))}
             </ul>

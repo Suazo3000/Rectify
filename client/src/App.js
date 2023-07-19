@@ -59,7 +59,7 @@ function App() {
               <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
               <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
-              <Route path="/profile/:therapistId" element={<Profile />} />
+              <Route path="/Profile/:therapistId" element={<Profile />} />
             </Routes>
           </div>
         </div>

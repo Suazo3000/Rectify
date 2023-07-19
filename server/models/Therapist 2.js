@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/rectify', { useNewUrlParser: true, useUnifiedTopology: true });
+const { Schema, model } = require('mongoose');
 
 const therapistSchema = new mongoose.Schema({
     name: {
@@ -14,7 +13,7 @@ const therapistSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    bio: {
+    Bio: {
         type: String,
         required: true, 
     },
