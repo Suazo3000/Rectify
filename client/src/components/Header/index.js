@@ -74,7 +74,7 @@ const Header = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -139,7 +139,7 @@ const Header = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              
             </IconButton>
              
           </Box>
@@ -151,19 +151,19 @@ const Header = () => {
                   {/* <Link className="btn btn-lg btn-info m-2" to="/me">
                   {Auth.getProfile().data.username}'s profile
                 </Link> */}
-                  {/* <Button variant="outline" onClick={logout}>
+                  <Button variant="outline" onClick={logout}>
                     Logout
-                  </Button> */}
+                  </Button>
                 </Stack>
               </>
             ) : (
               <>
-                {/* <Link
+                <Link
                   style={{ textDecoration: "none", color: "white" }}
                   to="/login"
                 >
                   <Button variant="outline">Login</Button>
-                </Link> */}
+                </Link>
                 {/* <Link className="btn btn-lg btn-light m-2" to="/signup">
                   Signup
                 </Link> */}
