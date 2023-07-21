@@ -58,6 +58,7 @@ function App() {
 
               <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
               <Route path="/Profile/:therapistId" element={<Profile />} />
+              <Route path="/therapists" element={<Therapists/>} />
 
               
               {/* <Route path="/about" element={<Therapists />} />  */}
