@@ -1,9 +1,17 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Therapist } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    therapists: async () => {
+      try {
+        const therapists = await Therapist.find();
+        return therapists;
+      } catch (error) {
+        throw new Error('Failed to fetch therapists');
+      }
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('thoughts');

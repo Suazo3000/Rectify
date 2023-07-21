@@ -1,0 +1,122 @@
+.aboutPage {
+    display: flex;
+    justify-content: center;
+    margin: 0rem auto;
+    /* width: 100%; */
+  }
+
+  #aboutPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem .5rem 0 .5rem;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    background-image: 'url("../img/backgroundAbout.png")'; /* Replace with the correct path to your background image */
+    background-size: cover;
+    background-position: center;
+   
+  }
+  
+  /* .aboutText {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 10rem;
+    text-align: center;
+  } */
+  
+  /* .aboutHeading {
+    font-size: 3.5rem;
+    color: var(--darkBlue);
+  }
+  
+  .bodyContent {
+    font-size: 2rem;
+    padding: 1.25rem;
+    color: var(--blue);
+  } */
+  
+  /* .aboutImg {
+    width: 50%;
+    height: 50%;
+  } */
+  
+  /* @media (max-width: 1399px) {}
+  
+  .aboutText {
+    padding: 2rem 5rem;
+  }
+  
+  @media (max-width: 1199px) {
+    .aboutText {
+      padding: 2rem;
+    }
+  
+    .aboutHeading {
+      font-size: 3rem;
+    }
+  
+    .bodyContent {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 1199px) {
+    .aboutText {
+      padding: 1.5rem;
+    }
+  
+    .aboutHeading {
+      font-size: 2.5rem;
+    }
+  
+    .bodyContent {
+      font-size: 1.2rem;
+    }
+  
+  }
+  
+  @media (max-width: 1023px) {
+  
+    .aboutText {
+      padding: 1rem;
+    }
+  
+    .aboutHeading {
+      font-size: 1.5rem;
+    }
+  
+    .bodyContent {
+      font-size: 1rem;
+    }
+  
+  } */
+  
+  /* @media (max-width: 767px) {}
+  
+  @media (max-width: 559px) {
+  
+    .aboutPage {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: .5rem;
+    }
+  
+  
+    .aboutImg {
+      width: 50%;
+      border-radius: 50%;
+    }
+  
+    .aboutText {
+      width: 100%;
+    }
+  } */
+  
+  
+/*   
+  @media (max-width: 479px) {}
+  
+  @media (max-width: 379px) {} */

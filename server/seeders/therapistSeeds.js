@@ -33,10 +33,12 @@ const therapistData = [
     bio: 'As a Licensed Professional Counselor specializing in substance abuse, I am devoted to supporting ex-convicts in their journey to overcome addiction and maintain sobriety. Through evidence-based therapies and personalized treatment plans, I work closely with my clients to address the root causes of substance abuse, helping them develop coping skills and relapse prevention strategies. My ultimate goal is to see individuals thrive in their recovery and lead healthy, fulfilling lives.',
   },
   {
+
     name: 'Dr. Emily Mitchell, PsyD',
     specialty: 'Trauma-Informed Therapy',
     location: 'Chicago, IL',
     bio: 'As a seasoned clinical psychologist with expertise in trauma-informed therapy, I am deeply committed to guiding ex-convicts through their healing journey. I recognize the impact of past experiences and provide a safe space for clients to process their emotions and develop resilience. With a strengths-based approach, I strive to empower individuals to overcome past traumas, break free from negative cycles, and build a brighter future filled with hope and possibility.',
+
   },
   {
     name: 'Dr. Maria Sanchez, PhD',

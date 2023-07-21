@@ -8,9 +8,13 @@ const typeDefs = gql`
     password: String
   }
 
-  
-
-  
+  type Therapist {
+    id: ID
+    name: String
+    specialty: String
+    location: String
+    bio: String
+  }
 
   type Auth {
     token: ID!
@@ -18,6 +22,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    therapists: [Therapist!]!
     me: User
   }
 
