@@ -5,19 +5,14 @@ import Auth from "../../utils/auth";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Stack from "@mui/material/Stack";
-import HandshakeTwoToneIcon from '@mui/icons-material/DeleteOutlined';
 
 const pages = [];
-const settings = ["Profile", "Dashboard", "Logout"];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -41,23 +36,22 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Logo will go below */}
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h4"
             noWrap
-            component="a"
+            // component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 500,
-              letterSpacing: ".3rem",
+              letterSpacing: "0.2rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -66,16 +60,16 @@ const Header = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              
+              color="inherit">               
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -100,8 +94,9 @@ const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
+
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+
           <Typography
             variant="h5"
             noWrap
@@ -110,10 +105,10 @@ const Header = () => {
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
-              flexGrow: 1,
+              flexGrow: 1200,
               fontFamily: "monospace",
               fontWeight: 500,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -130,18 +125,6 @@ const Header = () => {
                 {page}
               </Button>
             ))}
-
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              
-            </IconButton>
-             
           </Box>
 
           <div>
@@ -159,14 +142,14 @@ const Header = () => {
             ) : (
               <>
                 <Link
-                  style={{ textDecoration: "none", color: "white" }}
+                  style={{ textDecoration: "none", color: "inherit" }}
                   to="/login"
                 >
                   <Button variant="outline">Login</Button>
                 </Link>
-                {/* <Link className="btn btn-lg btn-light m-2" to="/signup">
-                  Signup
-                </Link> */}
+                <Link style={{ textDecoration: "none", color: "inherit" }} className="btn btn-lg btn-light m-2" to="/signup">
+                  SignUp
+                </Link>
               </>
             )}
           </div>
@@ -175,39 +158,6 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
-
-
-    // <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-    //   <Box className="container flex-row justify-space-between-lg justify-center align-center">
-    //     <div>
-    //       <Link className="text-light" to="/">
-    //         <h1 className="m-0">Rectify</h1>
-    //       </Link>
-    //       <p className="m-0">Our mission is to empower former inmates with the necessary counseling and support to facilitate their successful reintegration into society, fostering personal growth and enabling them to become positive contributors to their communities. Through comprehensive and tailored counseling programs, we strive to break the cycle of recidivism, promoting individual transformation and societal well-being. (CAN BE EDITED LATER)</p>
-    //     </div>
-    //     <div>
-    //       {Auth.loggedIn() ? (
-    //         <>
-    //           <Link className="btn btn-lg btn-info m-2" to="/me">
-    //             {Auth.getProfile().data.username}'s profile
-    //           </Link>
-    //           <button className="btn btn-lg btn-light m-2" onClick={logout}>
-    //             Logout
-    //           </button>
-    //         </>
-    //       ) : (
-    //         <>
-    //           <Link className="btn btn-lg btn-info m-2" to="/login">
-    //             Login
-    //           </Link>
-    //           <Link className="btn btn-lg btn-light m-2" to="/signup">
-    //             Signup
-    //           </Link>
-    //         </>
-    //       )}
-    //     </div>
-    //   </Box>
-    // </header>
   );
 };
 
