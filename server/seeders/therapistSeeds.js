@@ -9,35 +9,42 @@ mongoose.connect('mongodb://127.0.0.1:27017/rectify', {
 
 const therapistData = [
   {
-    name: 'Dale Cooper',
+    name: 'Dr. Samantha Roberts',
+    specialty: 'Cognitive Behavioral Therapy (CBT)',
+    location: 'New York City, NY',
+    bio: 'As an experienced Cognitive Behavioral Therapist, I am dedicated to helping ex-convicts overcome the challenges of reintegrating into society. My passion lies in empowering individuals to break free from the cycle of recidivism by fostering positive mindset shifts and teaching effective coping strategies. With a compassionate and non-judgmental approach, I am committed to guiding my clients toward personal growth, enabling them to lead fulfilling lives and contribute positively to their communities.',
+  },
+  {
+    name: 'David Chang, LMFT',
+    specialty: 'Trauma Therapy',
+    location: 'Los Angeles, CA',
+    bio: 'As a Licensed Marriage and Family Therapist, I understand the unique dynamics that ex-convicts face when reconnecting with their families. My therapeutic approach focuses on restoring and strengthening family bonds, fostering open communication, and promoting healing after incarceration. By addressing the interplay of family relationships, I aim to create a supportive environment that enables my clients to navigate challenges and embrace a new chapter in their lives',
+  },
+  {
+    name: 'Jonathan Ramirez, LCSW',
     specialty: 'Reintegration Counseling',
-    location: 'City A',
-    bio: 'I specialize in providing counseling and support to formerly incarcerated individuals as they navigate the challenges of reintegration into society. Together, we will develop strategies to overcome obstacles and achieve personal growth and success.',
+    location: 'Miami, FL',
+    bio: 'As a Licensed Clinical Social Worker, I am passionate about guiding ex-convicts on their path to successful reintegration into society. My person-centered approach emphasizes empathy, active listening, and collaboration. By addressing the challenges of re-entry, I assist clients in accessing vital resources, finding employment opportunities, and rebuilding their lives with dignity and purpose. Together, we will navigate the journey of transformation, turning challenges into opportunities for growth.',
   },
   {
-    name: 'Laura Palmer',
-    specialty: 'Post-Incarceration Trauma Therapy',
-    location: 'City B',
-    bio: 'With a focus on trauma-informed care, I assist individuals who have been released from incarceration in addressing and healing from the emotional and psychological impact of their experiences. Together, we will work towards building resilience and creating a brighter future.',
-  },
-  {
-    name: 'Audrey Horne',
-    specialty: 'Employment and Skills Development',
-    location: 'City C',
-    bio: 'My expertise lies in helping formerly incarcerated individuals acquire new skills, secure employment, and develop a positive and fulfilling career path. I am committed to supporting you in building a successful and sustainable future.',
+    name: 'Linda Johnson, LPC',
+    specialty: 'Substance Abuse Counseling',
+    location: 'Houston, TX',
+    bio: 'As a Licensed Professional Counselor specializing in substance abuse, I am devoted to supporting ex-convicts in their journey to overcome addiction and maintain sobriety. Through evidence-based therapies and personalized treatment plans, I work closely with my clients to address the root causes of substance abuse, helping them develop coping skills and relapse prevention strategies. My ultimate goal is to see individuals thrive in their recovery and lead healthy, fulfilling lives.',
   },
   {
 
-    name: 'Denise Bryson',
-    specialty: 'Family and Community Reintegration',
-    location: 'City D',
-    bio: 'As a family and community therapist, I specialize in facilitating the reintegration of formerly incarcerated individuals into their families and communities. By fostering healthy relationships and providing support, we can create a strong foundation for a successful reentry process.',
+    name: 'Dr. Emily Mitchell, PsyD',
+    specialty: 'Trauma-Informed Therapy',
+    location: 'Chicago, IL',
+    bio: 'As a seasoned clinical psychologist with expertise in trauma-informed therapy, I am deeply committed to guiding ex-convicts through their healing journey. I recognize the impact of past experiences and provide a safe space for clients to process their emotions and develop resilience. With a strengths-based approach, I strive to empower individuals to overcome past traumas, break free from negative cycles, and build a brighter future filled with hope and possibility.',
+
   },
   {
-    name: 'Lawrence Jacoby',
-    specialty: 'Substance Abuse and Addiction Recovery',
-    location: 'City E',
-    bio: 'I focus on helping individuals who have experienced incarceration overcome substance abuse and addiction. Through evidence-based interventions and personalized treatment plans, we can work towards long-term recovery and a positive reintegration into society.',
+    name: 'Dr. Maria Sanchez, PhD',
+    specialty: 'Anger Management',
+    location: 'Denver, CO',
+    bio: 'As a Doctor of Psychology specializing in anger management, I understand the emotional complexities that ex-convicts often face during their transition. Through evidence-based techniques and customized anger management strategies, I help my clients gain control over their emotions and responses. By fostering emotional intelligence and conflict resolution skills, I aim to empower individuals to break the cycle of aggression, channel their energy positively, and create harmonious relationships in all aspects of their lives.',
   },
 ];
 
