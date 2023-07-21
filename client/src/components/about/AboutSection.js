@@ -11,7 +11,7 @@ const AboutSection = ({ heading, text, image, sections, key }) => {
     position: "relative",
     left: sections%2 ? "150px" : "0px",
     right: sections%2 ? "150px" : "0px",
-    backgroundImage: `url(".img/backgroundAbout.png")`, // Add the path to your background image
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/images/backgroundAbout.png"})`, // Add the path to your background image
     backgroundSize: "cover", // Adjust as needed
     backgroundPosition: "center", // Adjust as needed
     // float: isRightSide ? "right" : "left", // Conditionally float the section to the right or left

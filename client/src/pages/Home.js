@@ -43,11 +43,9 @@ function LandingFrame() {
         height: "50%",
         width: "50%",
         backgroundPosition: "right", // Set the background image position
+        backgroundImage: `url(${process.env.PUBLIC_URL + "/images/Handcuffs.jpg"})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "contain", 
-        "backgroundImage": `url("images/background.png")`,
-        "backgroundRepeat": "no-repeat",
-        "backgroundSize": "cover",
+        backgroundSize: "cover",
         position: "display: flex",
         height: "100%",
         width: "100%",
