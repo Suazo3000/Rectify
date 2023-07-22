@@ -42,8 +42,17 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+
+      addComment: async (_, { therapistId, commentTitle, commentBody }) => {
+        return Therapist.findIdAndUpdate(
+          therapistId,
+          { $push: { comments: { commentTitle, commentBody } } },
+          { new: true, runValidators: true }
+        );
+      }
     },
   },
 };
+
 
 module.exports = resolvers;
