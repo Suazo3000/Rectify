@@ -34,10 +34,10 @@ const Profile = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    const newCommentObj = { 
-        
-        commentBody: newComment,
-        commenter: commenter };
+    const newCommentObj = {
+      commentBody: newComment,
+      commenter: commenter,
+    };
     try {
       const response = await fetch(`/api/therapists/${therapistId}/comments`, {
         method: "POST",
@@ -52,13 +52,32 @@ const Profile = () => {
     }
   };
 
+  const handleCommentDelete = async (commentId) => {
+    console.log("Deleting comment with ID:", commentId);
+    try {
+      const response = await fetch(
+        `/api/therapists/${therapistId}/comments/${commentId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setComment(comment.filter((comment) => comment._id !== commentId));
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
   };
 
   const handleCommenterChange = (e) => {
     setCommenter(e.target.value);
-    };
+  };
 
   return (
     <div>
@@ -75,24 +94,24 @@ const Profile = () => {
       <h3>Comments</h3>
       {comment.map((commentItem) => (
         <div key={commentItem._id}>
-          
           <p>{commentItem.commentBody}</p>
-        <p>from {commentItem.commenter}</p>
+          <p>from {commentItem.commenter}</p>
+            <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
         </div>
       ))}
 
       <form onSubmit={handleCommentSubmit}>
-        <input 
-        type="text" 
-        placeholder="Comment"
-        value={newComment} 
-        onChange={handleCommentChange} 
+        <input
+          type="text"
+          placeholder="Comment"
+          value={newComment}
+          onChange={handleCommentChange}
         />
         <input
-        type="text"
-        placeholder="Your name"
-        value={commenter}   
-        onChange={handleCommenterChange}
+          type="text"
+          placeholder="Your name"
+          value={commenter}
+          onChange={handleCommenterChange}
         />
         <button type="submit">Add Comment</button>
       </form>
