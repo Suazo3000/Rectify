@@ -57,12 +57,9 @@ function App() {
               <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
 
               <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
-<<<<<<< Updated upstream
-              <Route path="/Profile/:therapistId" element={<Profile />} />
-=======
+
               <Route path="/profile/:therapistId" element={<Profile />} />
               <Route path="/therapists" element={<Therapists/>} />
->>>>>>> Stashed changes
 
               
               {/* <Route path="/about" element={<Therapists />} />  */}

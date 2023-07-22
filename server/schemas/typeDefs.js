@@ -8,12 +8,19 @@ const typeDefs = gql`
     password: String
   }
 
+  type Comment {
+    commentTitle: String
+    commentBody: String
+    commenter: String
+  }
+
   type Therapist {
     id: ID
     name: String
     specialty: String
     location: String
     bio: String
+    comments: [Comment]
   }
 
   type Auth {
@@ -29,7 +36,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addComment(therapistId: ID!, commentTitle: String!, commentBody: String!): Therapist
   }
 `;
-
 module.exports = typeDefs;

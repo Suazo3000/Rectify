@@ -3,10 +3,10 @@ import { useQuery } from "@apollo/client";
 
 import {Link} from "react-router-dom"
 function LandingPageButton() {
-    return <Link to="/profile" class="nav-link">
-        <button class="btn btn-primary" > 
-            <span style={{"font-size": "24px"}}>
-                Available Therapist!
+    return <Link to="/about" className="nav-link">
+        <button className="btn btnPrimary" > 
+            <span style={{"fontSize": "24px"}}>
+               Click Here To Learn More
             </span>
         </button>
     </Link>
@@ -14,39 +14,38 @@ function LandingPageButton() {
 function LandingFrameMessage() {
     const style = {
         margin: "auto",
-        padding: "5% 35% 10% 10%",
-        color: "white",
-        fontSize: "25px",
-        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        padding: "3% 65% 13% 4%",
+        color: "#1876D2",
+        fontSize: "15px",
+        textShadow: "2px 2px 8px rgba(0, 0, 0, 0.5)",
     }
     return <div style={style}>
         
-        <div style={{"font-size": "96px"}}>
+        <div style={{"fontSize": "96px"}}>
            Welcome to Rectify!
         </div>
         <br></br>
-        <div style={{"font-size": "28px"}}>
-        Our mission is to empower former inmates with the necessary counseling and support to facilitate their successful reintegration into society, fostering personal growth and enabling them to become positive contributors to their communities. Through comprehensive and tailored counseling programs, we strive to break the cycle of recidivism, promoting individual transformation and societal well-being.    
+        <div style={{"fontSize": "25px"}}>
+        Unlocking Second Chances: Empowering Ex-Inmates for a Brighter Future. Join our transformative journey today.
+        
         </div>
         <br />
         <LandingPageButton />
     </div>
 }
+
 function LandingFrame() {
     const style = {
-        "background-color": "#f8f6e1",
+        backgroundColor: "#fff2ed",
         display: "flex", // Use flexbox to center the content
         justifyContent: "center", // Horizontally center the content
         alignItems: "center", // Vertically center the content
         height: "50%",
         width: "50%",
         backgroundPosition: "right", // Set the background image position
+        backgroundImage: `url(${process.env.PUBLIC_URL + "/images/Handcuffs.jpg"})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "contain", 
-    
-        "background-image": `url("images/Handcuffs_45.jpg")`,
-        "background-repeat": "no-repeat",
-        "background-size": "cover",
+        backgroundSize: "cover",
         position: "display: flex",
         height: "100%",
         width: "100%",

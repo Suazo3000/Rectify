@@ -7,7 +7,7 @@
     "start": "node server/server.js --ignore client", 
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "node server/seeds/therapistSeeds.js",
+    "seed": "node server/seeders/therapistSeeds.js",
     "build": "cd client && npm run build"
   },
   "devDependencies": {
