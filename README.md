@@ -60,4 +60,6 @@ Rectify is an application designed to provide essential support and resources to
 
 Copyright &#xA9; Rectify: All rights reserved. Unauthorized use, reproduction, or distribution of any content on this file is strictly prohibited without express written permission by those listed in the [Collaborators](#collaborators) section of this README file, July 2023.
 
+![Rectify app](/client/public/images/Rectify-screenshot.png)
+
 [Back to Top](#rectify)
