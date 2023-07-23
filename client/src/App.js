@@ -1,33 +1,38 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Therapists from './pages/Therapists';
-import Profile from './pages/Profile';
-import Home from './pages/Home'; // Import the Home component
-import About from './pages/About';
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import Therapists from "./pages/Therapists";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home"; // Import the Home component
+import About from "./pages/About";
 
-import Header from './components/Header';
-import Auth from './utils/auth';
+import Header from "./components/Header";
+import Auth from "./utils/auth";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -51,21 +56,28 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-          <Routes>
-              <Route path="/" element={<Home />} /> 
-              <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
-              <Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
-
-              <Route path="/" element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />} />
-
-              <Route path="/profile/:therapistId" element={<Profile />} />
-              <Route path="/therapists" element={<Therapists/>} />
-
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/login"
+                element={isLoggedIn ? <Navigate to="/" /> : <Login />}
+              />
+                  <Route
+                path="/"
+                element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="/signup"
+                element={isLoggedIn ? <Navigate to="/" /> : <SignUp />}
+              />
+              {isLoggedIn && <Route path="/" element={<Therapists />} />}
               
+              <Route path="/profile/:therapistId" element={<Profile />} />
+              <Route path="/therapists" element={<Therapists />} />
+
               {/* <Route path="/about" element={<Therapists />} />  */}
               <Route path="/about" element={<About />} />
-              <Route path="/" element={<Home />} /> 
-
+              <Route path="/" element={<Home />} />
             </Routes>
           </div>
         </div>
@@ -75,5 +87,3 @@ function App() {
 }
 
 export default App;
-
-
