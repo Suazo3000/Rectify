@@ -128,15 +128,26 @@ const Header = () => {
           <div>
             {Auth.loggedIn() ? (
               <>
-                <Stack spacing={2} direction="row">
-                  {/* <Link className="btn btn-lg btn-info m-2" to="/me">
-                  {Auth.getProfile().data.username}'s profile
-                </Link> */}
+               
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                >
+                  <Button variant="outline">HOME</Button>
+
+                  <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/about"
+                >
+                  <Button variant="outline">ABOUT</Button>
+                </Link>
+                
+                </Link>
                   <Button variant="outline" onClick={logout}>
-                    Logout
+                    LOGOUT
                   </Button>
                   
-                </Stack>
+             
               </>
             ) : (
               <>
