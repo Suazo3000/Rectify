@@ -44,7 +44,7 @@ const Header = () => {
           <Typography
             variant="h4"
             noWrap
-            // component="a"
+            component="a"
             href="/"
             sx={{
               mr: 2,
@@ -57,7 +57,7 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography>
+          </Typography> 
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -99,7 +99,7 @@ const Header = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -112,7 +112,7 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography>
+          </Typography> 
           <Box sx={{ flexGrow: 2, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -128,36 +128,34 @@ const Header = () => {
           <div>
             {Auth.loggedIn() ? (
               <>
-               
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
                   to="/"
                 >
                   <Button variant="outline">HOME</Button>
-                  </Link>
+                </Link>
 
-                  <Link
+                <Link
                   style={{ textDecoration: "none", color: "inherit" }}
                   to="/about"
                 >
                   <Button variant="outline">ABOUT</Button>
                 </Link>
-                
-                <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  to="/"
+
+                <Link style={{ textDecoration: "none", color: "inherit" }}>
+                  <Button
+                    variant="outline"
+                    onClick={(event) => {
+                      logout(event);
+                      window.location.href = "/";
+                    }}
                   >
-                  <Button variant="outline" onClick={(event) => {logout(event); window.location.href = '/' }}>
                     LOGOUT
                   </Button>
-                  </Link>
-                  
-             
+                </Link>
               </>
             ) : (
               <>
-                
-
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
                   to="/"
