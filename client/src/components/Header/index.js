@@ -123,6 +123,7 @@ const Header = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
+                
               </Button>
             ))}
           </Box>
@@ -149,6 +150,9 @@ const Header = () => {
                 </Link>
                 <Link style={{ textDecoration: "none", color: "inherit", fontSize: '14px'}} className="btn btn-lg btn-light m-2" to="/signup">
                   SIGN UP
+                </Link>
+                <Link style={{ textDecoration: "none", color: "inherit", fontSize: '14px'}} className="btn btn-lg btn-light m-2" to="/about">
+                  ABOUT
                 </Link>
                 
               </>
