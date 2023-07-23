@@ -74,7 +74,6 @@ function App() {
               <Route path="/Profile/:therapistId" element={<Profile />} />
               <Route path="/therapists" element={<Therapists />} />
               <Route path="/about" element={<About />} />
-              <Route path="/" element={<Home />} />
             </Routes>
           </div>
         </div>
