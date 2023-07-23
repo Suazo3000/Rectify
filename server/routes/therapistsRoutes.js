@@ -24,23 +24,30 @@ router.get('/therapists/:therapistId', async (req, res) => {
 );
 
 router.post('/therapists/:therapistId/comments', async (req, res) => {
+    console.log("Received a POST request!");
     try {
+        console.log("Fetching therapist with ID");
         const therapist = await Therapist.findOne({_id: req.params.therapistId});
         if (!therapist) {
+            console.log("Therapist not found");
             return res.status(404).json({ error: 'Therapist not found' });
         }
 
-        therapist.comments.push({
-            commentTitle: req.body.commentTitle,
-            commentBody: req.body.commentBody,
-            commenter: req.body.commenter
+        const newComment = {
             
-        });
+            commentBody: req.body.commentBody,
+            commenter: req.body.commenter  
+        };
+        console.log("Adding new comment to therapist");
 
+        therapist.comments.push(newComment);
+        console.log("Saving therapist");
         await therapist.save();
-        res.status(201).json({ message: 'comment added successfully' });
+
+        console.log("Successfully added new comment to therapist");
+        res.status(201).json(therapist.comments[therapist.comments.length - 1]);
     } catch (error) {
-        console.log(error);
+        console.log("error in POST request", error);
         res.status(500).json({ error: 'Server Error' });
         }
     });

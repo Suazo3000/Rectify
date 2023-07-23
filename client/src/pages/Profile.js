@@ -29,7 +29,7 @@ const Profile = () => {
 
     fetchTherapist();
 
-    fetchTherapist();
+
   }, [therapistId]);
 
   const handleCommentSubmit = async (e) => {
@@ -47,6 +47,7 @@ const Profile = () => {
       const data = await response.json();
       setComment([...comment, data]);
       setNewComment("");
+      setCommenter("");
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +65,6 @@ const Profile = () => {
 
       if (response.ok) {
         setComment(comment.filter((comment) => comment._id !== commentId));
-
       }
     } catch (error) {
       console.log(error);
@@ -96,7 +96,9 @@ const Profile = () => {
         <div key={commentItem._id}>
           <p>{commentItem.commentBody}</p>
           <p>from {commentItem.commenter}</p>
-            <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
+          <button onClick={() => handleCommentDelete(commentItem._id)}>
+            Delete
+          </button>
         </div>
       ))}
 
