@@ -60,15 +60,14 @@ const Header = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit">               
-            </IconButton>
+              color="inherit"
+            ></IconButton>
 
             <Menu
               id="menu-appbar"
@@ -94,7 +93,6 @@ const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
-
           </Box>
 
           <Typography
@@ -123,7 +121,6 @@ const Header = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
-                
               </Button>
             ))}
           </Box>
@@ -138,23 +135,40 @@ const Header = () => {
                   <Button variant="outline" onClick={logout}>
                     Logout
                   </Button>
+                  
                 </Stack>
               </>
             ) : (
               <>
+                
+
                 <Link
-                  style={{ textDecoration: "none", color: "inherit" }} 
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                >
+                  <Button variant="outline">HOME</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/about"
+                >
+                  <Button variant="outline">ABOUT</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
                   to="/login"
                 >
                   <Button variant="outline">LOGIN</Button>
                 </Link>
-                <Link style={{ textDecoration: "none", color: "inherit", fontSize: '14px'}} className="btn btn-lg btn-light m-2" to="/signup">
-                  SIGN UP
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/signup"
+                >
+                  <Button variant="outline">SIGN UP</Button>
                 </Link>
-                <Link style={{ textDecoration: "none", color: "inherit", fontSize: '14px'}} className="btn btn-lg btn-light m-2" to="/about">
-                  ABOUT
-                </Link>
-                
               </>
             )}
           </div>
