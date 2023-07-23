@@ -1,123 +1,144 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-/*const comments = [{
-    id: "1",
-    commentTitle: "Five stars",
-    commentBody: "I am very happy with this therapist!",
-    commenter: "Tester N."
-}]*/
+import {
+    MDBCol,
+    MDBContainer,
+    MDBRow,
+    MDBCard,
+    MDBCardText,
+    MDBCardBody,
+    MDBCardImage,
+} from 'mdb-react-ui-kit';
 
 const Profile = () => {
-  const { therapistId } = useParams();
-  const [therapist, setTherapist] = useState(null);
-  const [comment, setComment] = useState([]);
-  const [newComment, setNewComment] = useState("");
-  const [commenter, setCommenter] = useState("");
+    const { therapistId } = useParams();
+    const [therapist, setTherapist] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
+    const [commenter, setCommenter] = useState("");
 
-  useEffect(() => {
-    const fetchTherapist = async () => {
-      try {
-        const response = await fetch(`/api/therapists/${therapistId}`);
-        const data = await response.json();
-        setTherapist(data);
-        setComment(data.comments);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    useEffect(() => {
+        const fetchTherapist = async () => {
+            try {
+                const response = await fetch(`/api/therapists/${therapistId}`);
+                const data = await response.json();
+                setTherapist(data);
+                setComments(data.comments);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-    fetchTherapist();
+        fetchTherapist();
+    }, [therapistId]);
 
-
-  }, [therapistId]);
-
-  const handleCommentSubmit = async (e) => {
-    e.preventDefault();
-    const newCommentObj = {
-      commentBody: newComment,
-      commenter: commenter,
-    };
-    try {
-      const response = await fetch(`/api/therapists/${therapistId}/comments`, {
-        method: "POST",
-        body: JSON.stringify(newCommentObj),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      setComment([...comment, data]);
-      setNewComment("");
-      setCommenter("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleCommentDelete = async (commentId) => {
-    console.log("Deleting comment with ID:", commentId);
-    try {
-      const response = await fetch(
-        `/api/therapists/${therapistId}/comments/${commentId}`,
-        {
-          method: "DELETE",
+    const handleCommentSubmit = async (e) => {
+        e.preventDefault();
+        const newCommentObj = {
+            commentBody: newComment,
+            commenter: commenter,
+        };
+        try {
+            const response = await fetch(`/api/therapists/${therapistId}/comments`, {
+                method: "POST",
+                body: JSON.stringify(newCommentObj),
+                headers: { "Content-Type": "application/json" },
+            });
+            const data = await response.json();
+            setComments([...comments, data]);
+            setNewComment("");
+            setCommenter("");
+        } catch (error) {
+            console.log(error);
         }
-      );
+    };
 
-      if (response.ok) {
-        setComment(comment.filter((comment) => comment._id !== commentId));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const handleCommentDelete = async (commentId) => {
+        try {
+            const response = await fetch(`/api/therapists/${therapistId}/comments/${commentId}`, {
+                method: "DELETE",
+            });
 
-  const handleCommentChange = (e) => {
-    setNewComment(e.target.value);
-  };
+            if (response.ok) {
+                setComments(comments.filter((comment) => comment._id !== commentId));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-  const handleCommenterChange = (e) => {
-    setCommenter(e.target.value);
-  };
+    return (
+        <section style={{ backgroundColor: '#eee' }} className='mt-5'>
+            <MDBContainer className="py-5">
+            {therapist && (
+                <MDBRow>
+                <MDBCol lg="4">
+                    <MDBCard className="mb-4">
+                    <MDBCardBody className="text-center">
+                        <MDBCardImage
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                        alt="avatar"
+                        className="rounded-circle"
+                        style={{ width: '150px' }}
+                        fluid />
+                        <p className="text-muted mb-1">{therapist.name}</p>
+                        <p className="text-muted mb-4">{therapist.specialty}</p>
+                    </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
+                <MDBCol lg="8">
+                    <MDBCard className="mb-4">
+                    <MDBCardBody>
+                        <MDBRow>
+                        <MDBCol sm="3">
+                            <MDBCardText>Bio</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                            <MDBCardText className="text-muted">{therapist.bio}</MDBCardText>
+                        </MDBCol>
+                        </MDBRow>
+                        <hr />
+                        <MDBRow>
+                        <MDBCol sm="3">
+                            <MDBCardText>Location</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                            <MDBCardText className="text-muted">{therapist.location}</MDBCardText>
+                        </MDBCol>
+                        </MDBRow>
+                    </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
+                </MDBRow>
+            )}
 
-  return (
-    <div>
-      <h2>Profile</h2>
-      {therapist && (
-        <div>
-          <h3>{therapist.name}</h3>
-          <p>{therapist.specialty}</p>
-          <p>{therapist.location}</p>
-          <p>{therapist.bio}</p>
-        </div>
-      )}
+            <h3>Comments</h3>
+            {comments.map((commentItem) => (
+                <div key={commentItem._id}>
+                <p>{commentItem.commentBody}</p>
+                <p>from {commentItem.commenter}</p>
+                <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
+                </div>
+            ))}
 
-      <h3>Comments</h3>
-      {comment.map((commentItem) => (
-        <div key={commentItem._id}>
-          <p>{commentItem.commentBody}</p>
-          <p>from {commentItem.commenter}</p>
-          <button onClick={() => handleCommentDelete(commentItem._id)}>
-            Delete
-          </button>
-        </div>
-      ))}
-
-      <form onSubmit={handleCommentSubmit}>
-        <input
-          type="text"
-          placeholder="Comment"
-          value={newComment}
-          onChange={handleCommentChange}
-        />
-        <input
-          type="text"
-          placeholder="Your name"
-          value={commenter}
-          onChange={handleCommenterChange}
-        />
-        <button type="submit">Add Comment</button>
-      </form>
-    </div>
-  );
+            <form onSubmit={handleCommentSubmit}>
+                <input
+                type="text"
+                placeholder="Comment"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                />
+                <input
+                type="text"
+                placeholder="Your name"
+                value={commenter}
+                onChange={(e) => setCommenter(e.target.value)}
+                />
+                <button type="submit">Add Comment</button>
+            </form>
+            </MDBContainer>
+        </section>
+    );
 };
+
 export default Profile;

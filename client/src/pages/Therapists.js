@@ -61,7 +61,7 @@ const Therapists = ({ setIsLoggedIn }) => {
             Select a Therapist
           </h4>
           <div className="card-body">
-            <p>Choose from the top five therapists:</p>
+            <p>Choose from the top therapists:</p>
 
             
             <ul className="list-group">

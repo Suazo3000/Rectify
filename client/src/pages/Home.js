@@ -1,7 +1,6 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-
 import {Link} from "react-router-dom"
+
 function LandingPageButton() {
     return <Link to="/about" className="nav-link">
         <button className="btn btnPrimary" > 
@@ -40,8 +39,6 @@ function LandingFrame() {
         display: "flex", // Use flexbox to center the content
         justifyContent: "center", // Horizontally center the content
         alignItems: "center", // Vertically center the content
-        height: "50%",
-        width: "50%",
         backgroundPosition: "right", // Set the background image position
         backgroundImage: `url(${process.env.PUBLIC_URL + "/images/Handcuffs.jpg"})`,
         backgroundRepeat: "no-repeat",
