@@ -134,6 +134,7 @@ const Header = () => {
                   to="/"
                 >
                   <Button variant="outline">HOME</Button>
+                  </Link>
 
                   <Link
                   style={{ textDecoration: "none", color: "inherit" }}
@@ -142,10 +143,14 @@ const Header = () => {
                   <Button variant="outline">ABOUT</Button>
                 </Link>
                 
-                </Link>
-                  <Button variant="outline" onClick={logout}>
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                  >
+                  <Button variant="outline" onClick={(event) => {logout(event); window.location.href = '/' }}>
                     LOGOUT
                   </Button>
+                  </Link>
                   
              
               </>
