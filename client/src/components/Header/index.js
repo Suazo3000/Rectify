@@ -44,7 +44,7 @@ const Header = () => {
           <Typography
             variant="h4"
             noWrap
-            // component="a"
+            component="a"
             href="/"
             sx={{
               mr: 2,
@@ -57,18 +57,17 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography>
+          </Typography> 
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit">               
-            </IconButton>
+              color="inherit"
+            ></IconButton>
 
             <Menu
               id="menu-appbar"
@@ -94,14 +93,13 @@ const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
-
           </Box>
 
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -114,7 +112,7 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography>
+          </Typography> 
           <Box sx={{ flexGrow: 2, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -130,25 +128,67 @@ const Header = () => {
           <div>
             {Auth.loggedIn() ? (
               <>
-                <Stack spacing={2} direction="row">
-                  {/* <Link className="btn btn-lg btn-info m-2" to="/me">
-                  {Auth.getProfile().data.username}'s profile
-                </Link> */}
-                  <Button variant="outline" onClick={logout}>
-                    Logout
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                >
+                  <Button variant="outline">HOME</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/about"
+                >
+                  <Button variant="outline">ABOUT</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/therapists"
+                >
+                  <Button variant="outline">THERAPISTS</Button>
+                </Link>
+
+                <Link style={{ textDecoration: "none", color: "inherit" }}>
+                  <Button
+                    variant="outline"
+                    onClick={(event) => {
+                      logout(event);
+                      window.location.href = "/";
+                    }}
+                  >
+                    LOGOUT
                   </Button>
-                </Stack>
+                </Link>
               </>
             ) : (
               <>
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                >
+                  <Button variant="outline">HOME</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/about"
+                >
+                  <Button variant="outline">ABOUT</Button>
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
                   to="/login"
                 >
-                  <Button variant="outline">Login</Button>
+                  <Button variant="outline">LOGIN</Button>
                 </Link>
-                <Link style={{ textDecoration: "none", color: "inherit" }} className="btn btn-lg btn-light m-2" to="/signup">
-                  SignUp
+
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/signup"
+                >
+                  <Button variant="outline">SIGN UP</Button>
                 </Link>
               </>
             )}
