@@ -142,14 +142,15 @@ const Header = () => {
             ) : (
               <>
                 <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{ textDecoration: "none", color: "inherit" }} 
                   to="/login"
                 >
-                  <Button variant="outline">Login</Button>
+                  <Button variant="outline">LOGIN</Button>
                 </Link>
-                <Link style={{ textDecoration: "none", color: "inherit" }} className="btn btn-lg btn-light m-2" to="/signup">
-                  SignUp
+                <Link style={{ textDecoration: "none", color: "inherit", fontSize: '14px'}} className="btn btn-lg btn-light m-2" to="/signup">
+                  SIGN UP
                 </Link>
+                
               </>
             )}
           </div>
