@@ -12,6 +12,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -54,30 +55,17 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          <Header handleLogout={handleLogout} />
           <div className="container">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/login"
-                element={isLoggedIn ? <Navigate to="/" /> : <Login />}
-              />
-                  <Route
-                path="/"
-                element={isLoggedIn ? <Therapists /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="/signup"
-                element={isLoggedIn ? <Navigate to="/" /> : <SignUp />}
-              />
-              {isLoggedIn && <Route path="/" element={<Therapists />} />}
-              
-              <Route path="/profile/:therapistId" element={<Profile />} />
-              <Route path="/therapists" element={<Therapists />} />
-
-              {/* <Route path="/about" element={<Therapists />} />  */}
-              <Route path="/about" element={<About />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+              <Route path="/login" element={isLoggedIn ? <Navigate to="/therapists" /> : <Login />} />
+              <Route path="/signup" element={isLoggedIn ? <Navigate to="/therapists" /> : <SignUp />} />
+              {isLoggedIn && (
+                <Route path="/therapists" element={<Therapists />} />
+              )}
+              <Route path="/profile/:therapistId" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+              <Route path="/about" element={isLoggedIn ? <About /> : <Navigate to="/login" />} />
             </Routes>
           </div>
         </div>
