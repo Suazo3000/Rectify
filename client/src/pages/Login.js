@@ -149,7 +149,7 @@ const Login = (props) => {
                   Success! You may now head <Link to="/">back to the homepage.</Link>
                 </p>
               ) : (
-                <div className="my-3 p-3 bg-danger text-white">
+                <div >
                   {error && error.message}
                 </div>
               )}
