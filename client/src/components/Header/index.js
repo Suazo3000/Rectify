@@ -142,6 +142,13 @@ const Header = () => {
                   <Button variant="outline">ABOUT</Button>
                 </Link>
 
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/therapists"
+                >
+                  <Button variant="outline">THERAPISTS</Button>
+                </Link>
+
                 <Link style={{ textDecoration: "none", color: "inherit" }}>
                   <Button
                     variant="outline"
