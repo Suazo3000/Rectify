@@ -31,7 +31,7 @@ const Login = (props) => {
     });
   };
 
-  //submit form
+  // submit form
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -51,7 +51,7 @@ const Login = (props) => {
       password: '',
     });
   };
-
+ // Style with MUI
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
