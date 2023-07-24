@@ -4,15 +4,15 @@ At Rectify, our mission is to foster a positive and healthy post-prison experien
 
 ## Table of Contents
 
-1. [Description of Rectify](#Description)
+1. [Description of Rectify Application](#description-of-rectify-application)
 
-4. [Technologies Used](#technologies-used-to-create-peace-of-mind)
+4. [Technologies Used](#technologies-used-to-create-rectify)
 
 2. [Collaborators](#collaborators)
 
 5. [Copyright Information](#copyright-information)
 
-## Description
+## Description of Rectify Application
 
 Rectify is an application designed to provide essential support and resources to prior inmates upon their release from prison. The transition from incarceration to freedom can be overwhelming, and this platform aims to connect individuals with trained therapists who can assist them in their journey to reintegrate into society.
 
@@ -56,7 +56,7 @@ Rectify is an application designed to provide essential support and resources to
 - [Steve](https://github.com/Suazo3000)
 - [Donnie](https://github.com/Donnie46)
 
-## Copyright
+## Copyright Information
 
 Copyright &#xA9; Rectify: All rights reserved. Unauthorized use, reproduction, or distribution of any content on this file is strictly prohibited without express written permission by those listed in the [Collaborators](#collaborators) section of this README file, July 2023.
 
