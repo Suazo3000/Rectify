@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
-
-//import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
-//import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import PersonAddAlt1RoundedIcon from '@mui/icons-material/PersonAddAlt1Rounded';
 import Typography from '@mui/material/Typography';
@@ -22,15 +15,16 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const defaultTheme = createTheme();
-
+// holds user input values
 const SignUp = () => {
   const [formState, setFormState] = useState({
     username: '',
     email: '',
     password: '',
   });
+  
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
+// handles the changes to input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -39,11 +33,11 @@ const SignUp = () => {
       [name]: value,
     });
   };
-
+// handles the form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-
+// calls the addUser mutations to create new user
     try {
       const { data } = await addUser({
         variables: { ...formState },
@@ -54,7 +48,7 @@ const SignUp = () => {
       console.error(e);
     }
   };
-
+//Style to the page using MUI
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -125,11 +119,18 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                {/* <Link href="url(/pages/Login.js)" variant="body2">
-                  Already have an account? Login
-                </Link> */}
               </Grid>
             </Grid>
+
+            {data ? (
+                <p>
+                  Success! You may now head <Link to="/">back to the homepage.</Link>
+                </p>
+              ) : (
+                <div style={{color: 'red'}} >
+                  {error && error.message}
+                </div>
+              )}
           </Box>
         </Box>
       </Container>

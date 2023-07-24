@@ -22,15 +22,25 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
+      if(!username || !email || !password) throw new AuthenticationError("Please try again, add text to fields! ");
+
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        throw new AuthenticationError(' User already exists, please signup with differnt email!');
+      }
+
       const user = await User.create({ username, email, password });
+
       const token = signToken(user);
+
       return { token, user };
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError('No user found with this email address!');
       }
 
       const correctPw = await user.isCorrectPassword(password);
