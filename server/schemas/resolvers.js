@@ -22,7 +22,7 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
-      if(!username || !email || !password) throw new AuthenticationError("Bad request");
+      if(!username || !email || !password) throw new AuthenticationError("Please try again, add text to fields! ");
 
       const existingUser = await User.findOne({ email });
       if (existingUser) {
