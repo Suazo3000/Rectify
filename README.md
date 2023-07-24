@@ -62,4 +62,8 @@ Copyright &#xA9; Rectify: All rights reserved. Unauthorized use, reproduction, o
 
 ![Rectify app](/client/public/images/Rectify-screenshot.png)
 
+![Login](/client/public/images/Login-screenshot.png)
+
+![SignUp](/client/public/images/Signup-screenshot.png)
+
 [Back to Top](#rectify)
