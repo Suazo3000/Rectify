@@ -32,6 +32,7 @@ const Profile = () => {
         fetchTherapist();
     }, [therapistId]);
 
+    // Plug this in to the "Add Comment" button
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
         const newCommentObj = {
@@ -66,6 +67,7 @@ const Profile = () => {
             console.log(error);
         }
     };
+    console.log(comments);
 
     return (
         <section style={{ backgroundColor: '#eee' }} className='mt-5'>
@@ -86,6 +88,7 @@ const Profile = () => {
                     </MDBCardBody>
                     </MDBCard>
                 </MDBCol>
+                {/* Starting */}
                 <MDBCol lg="8">
                     <MDBCard className="mb-4">
                     <MDBCardBody>
@@ -109,16 +112,38 @@ const Profile = () => {
                     </MDBCardBody>
                     </MDBCard>
                 </MDBCol>
+                {/* Ending */}
                 </MDBRow>
             )}
 
             <h3>Comments</h3>
             {comments.map((commentItem) => (
-                <div key={commentItem._id}>
-                <p>{commentItem.commentBody}</p>
-                <p>from {commentItem.commenter}</p>
-                <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
-                </div>
+                <MDBCol lg="8" key={commentItem._id}>
+                    <MDBCard className="mb-4">
+                    <MDBCardBody>
+                        <MDBRow>
+                        <MDBCol sm="3">
+                            <MDBCardText>Comments</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                            <MDBCardText className="text-muted">{commentItem.commentBody}</MDBCardText>
+                        </MDBCol>
+                        </MDBRow>
+                        <hr />
+                        <MDBRow>
+                        <MDBCol sm="3">
+                            <MDBCardText>Commenter</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                            <MDBCardText className="text-muted">{commentItem.commenter}</MDBCardText>
+                        </MDBCol>
+                        </MDBRow>
+                        <MDBRow>
+                        <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
+                        </MDBRow>
+                    </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
             ))}
 
             <form onSubmit={handleCommentSubmit}>
