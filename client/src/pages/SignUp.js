@@ -130,6 +130,16 @@ const SignUp = () => {
                 </Link> */}
               </Grid>
             </Grid>
+
+            {data ? (
+                <p>
+                  Success! You may now head <Link to="/">back to the homepage.</Link>
+                </p>
+              ) : (
+                <div style={{color: 'red'}} >
+                  {error && error.message}
+                </div>
+              )}
           </Box>
         </Box>
       </Container>
