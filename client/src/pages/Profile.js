@@ -16,6 +16,8 @@ const Profile = () => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [commenter, setCommenter] = useState("");
+    const [editCommentID, setEditCommentId] = useState(null);
+    const [editComment, setEditComment] = useState("");
 
     useEffect(() => {
         const fetchTherapist = async () => {
@@ -52,6 +54,23 @@ const Profile = () => {
         } catch (error) {
             console.log(error);
         }
+    };
+
+    const handleCommentEdit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(`/api/therapists/${therapistId}/comments/${editCommentID}`, {
+          method: "PUT",
+          body: JSON.stringify({ commentBody: editComment }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+        setComments(comments.map(comment => comment._id === editCommentID ? data : comment));
+        setEditCommentId(null);
+        setEditComment("");
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     const handleCommentDelete = async (commentId) => {
@@ -139,12 +158,28 @@ const Profile = () => {
                         </MDBCol>
                         </MDBRow>
                         <MDBRow>
+                          <button onClick={() => {
+                            setEditCommentId(commentItem._id);
+                            setEditComment(commentItem.commentBody);
+                          }}>Edit</button>
                         <button onClick={() => handleCommentDelete(commentItem._id)}>Delete</button>
                         </MDBRow>
                     </MDBCardBody>
                     </MDBCard>
                 </MDBCol>
             ))}
+
+            {editCommentID && (
+              <form onSubmit={handleCommentEdit}>
+                <input
+                  type="text"
+                  placeholder="Edit Comment"
+                  value={editComment}
+                  onChange={(e) => setEditComment(e.target.value)}
+                />
+                <button type="submit">Submit Edit</button>
+              </form>
+            )}
 
             <form onSubmit={handleCommentSubmit}>
                 <input

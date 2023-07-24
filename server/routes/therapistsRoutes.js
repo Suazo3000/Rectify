@@ -52,6 +52,28 @@ router.post('/therapists/:therapistId/comments', async (req, res) => {
         }
     });
 
+    router.put('/therapists/:therapistId/comments/:commentId', async (req, res) => {
+        try {
+            const therapist = await Therapist.findOne({ _id: req.params.therapistId });
+            if (!therapist) {
+                return res.status(404).json({ error: 'Therapist not found' });
+            }
+
+            const commentIndex = therapist.comments.findIndex(comment => comment._id.toString() === req.params.commentId);
+
+            if (commentIndex === -1) {
+                return res.status(404).json({ error: 'Comment not found' });
+            }
+
+            therapist.comments[commentIndex].commentBody = req.body.commentBody;
+            await therapist.save();
+            res.status(200).json(therapist.comments[commentIndex]);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Server Error' });
+        }
+    });
+
     router.delete('/therapists/:therapistId/comments/:commentId', async (req, res) => {
         try {
             const therapist = await Therapist.findOne({ _id: req.params.therapistId });
