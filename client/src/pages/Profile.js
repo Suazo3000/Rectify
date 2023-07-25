@@ -109,7 +109,7 @@ const Profile = () => {
 
   return (
     <section style={{ backgroundColor: "#eee" }} className="mt-5">
-{/* {therapist && (
+      {/* {therapist && (
         <TherapistCard
           name={therapist.name}
           specialty={therapist.specialty}
@@ -132,6 +132,7 @@ const Profile = () => {
                     style={{ width: "141px" }}
                     fluid
                   />
+                  <hr />
                   <p className="text-muted mb-1">{therapist.name}</p>
                   <p className="text-muted mb-4">{therapist.specialty}</p>
                 </MDBCardBody>
@@ -143,7 +144,7 @@ const Profile = () => {
                 <MDBCardBody>
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Bio</MDBCardText>
+                      <MDBCardText style={{ fontWeight: 500 }}>Bio :</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
@@ -154,7 +155,7 @@ const Profile = () => {
                   <hr />
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Location</MDBCardText>
+                      <MDBCardText style={{ fontWeight: 500 }}>Location :</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
@@ -168,78 +169,94 @@ const Profile = () => {
             {/* Ending */}
           </MDBRow>
         )}
-
-        <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Comments</h3>
+        <h3
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Comments
+        </h3>
         {comments.map((commentItem) => (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <MDBCol lg="8" key={commentItem._id}>
-            <MDBCard className="mb-4">
-              <MDBCardBody>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Comments</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      {commentItem.commentBody}
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Commenter</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      {commentItem.commenter}
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                      gap: "10px",
-                    }}
-                  >
-                    <button
-                      onClick={() => {
-                        setEditCommentId(commentItem._id);
-                        setEditComment(commentItem.commentBody);
-                      }}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <MDBCol lg="8" key={commentItem._id}>
+              <MDBCard className="mb-4">
+                <MDBCardBody>
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText style={{ fontWeight: 500 }}>Comments :</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">
+                        {commentItem.commentBody}
+                      </MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText style={{ fontWeight: 500 }}>Commenter :</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">
+                        {commentItem.commenter}
+                      </MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <div
                       style={{
-                        minWidth: "80px",
-                        height: "30px",
-                        flex: "1 0 80px",
-                        maxWidth: "30%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        gap: "10px",
                       }}
                     >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleCommentDelete(commentItem._id)}
-                      style={{
-                        minWidth: "80px",
-                        height: "30px",
-                        flex: "1 0 80px",
-                        maxWidth: "30%",
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>{" "}
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </div>
+                      <button
+                        onClick={() => {
+                          setEditCommentId(commentItem._id);
+                          setEditComment(commentItem.commentBody);
+                        }}
+                        style={{
+                          minWidth: "80px",
+                          height: "30px",
+                          flex: "1 0 80px",
+                          maxWidth: "30%",
+                          backgroundColor: "#39A0ED",
+                          color: "White",
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleCommentDelete(commentItem._id)}
+                        style={{
+                          minWidth: "80px",
+                          height: "30px",
+                          flex: "1 0 80px",
+                          maxWidth: "30%",
+                          backgroundColor: "#39A0ED",
+                          color: "White",
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>{" "}
+                  </MDBRow>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          </div>
         ))}
-
         {editCommentID && (
           <form onSubmit={handleCommentEdit}>
             <input
@@ -251,26 +268,36 @@ const Profile = () => {
             <button type="submit">Submit Edit</button>
           </form>
         )}
-
-<form onSubmit={handleCommentSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-  <input
-    type="text"
-    placeholder="Comment"
-    value={newComment}
-    onChange={(e) => setNewComment(e.target.value)}
-    style={{ width: "100%", padding: "5px 10px", marginBottom: "10px" }}
-  />
-  <input
-    type="text"
-    placeholder="Your name"
-    value={commenter}
-    onChange={(e) => setCommenter(e.target.value)}
-    style={{ width: "100%", padding: "5px 10px", marginBottom: "10px" }}
-  />
-  <button type="submit" style={{ width: "25%" }}>
-    Add Comment
-  </button>
-</form>      </MDBContainer>
+        <form
+          onSubmit={handleCommentSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Comment here"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            style={{ width: "100%", padding: "5px 10px", marginBottom: "10px" }}
+          />
+          <input
+            type="text"
+            placeholder="Your name"
+            value={commenter}
+            onChange={(e) => setCommenter(e.target.value)}
+            style={{ width: "100%", padding: "5px 10px", marginBottom: "10px" }}
+          />
+          <button
+            type="submit"
+            style={{ width: "25%", backgroundColor: "#39A0ED", color: "White" }}
+          >
+            Add Comment
+          </button>
+        </form>{" "}
+      </MDBContainer>
     </section>
   );
 };
