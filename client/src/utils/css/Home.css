@@ -1,0 +1,110 @@
+.landing-message {
+    margin: auto;
+    /* padding: 3% 10%; */
+    color: #1876D2;
+    font-size: 44px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+.landing-welcome {
+    
+    margin-top: 5px;
+    margin: auto;
+    /* background-color: #fffef5; */
+    /* background-color: #fff5d1; */
+    background-color: #ffecb3;
+    color: #1876D2;
+    font-size: 96px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+.btn-primary {
+    /* border-color: black; */
+    border-style: bold;
+    font-size: large;
+  }
+
+  .landing-button {
+   
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 36px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0D6efd;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+
+  .home-image {
+    height: 75%;
+    width: 75%; 
+    max-width: 300px; 
+    max-height: 300px;
+    border-radius: 50px; 
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);  
+  }
+  
+  @media screen and (max-width: 479px) {
+    .landing-welcome {
+      font-size: 36px;
+    }
+    .landing-message {
+        font-size: 20px;
+      }
+      .landing-button {
+        font-size: 20px;
+        padding: 12px 24px;
+      }
+  }
+  
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    .landing-welcome {
+      font-size: 56px;
+    }
+    .landing-message {
+        font-size: 30px;
+      }
+
+    .landing-button {
+          font-size: 22px;
+          padding: 14px 28px;
+        }
+  }
+
+  
+  @media screen and (min-width: 768px) and (max-width: 1440px) {
+    .landing-welcome {
+      font-size: 65px;
+    }
+    .landing-message {
+        font-size: 40px;
+      }
+    .landing-button {
+        font-size: 24px;
+        padding: 15px 30px;
+      }
+  }
+  
+  /* @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .landing-welcome {
+      font-size: 79px;
+    }
+    .landing-message {
+        font-size: 60px;
+      }
+  } */
+
+  
+  /* Center the LandingPageButton content */
+  .landing-button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
