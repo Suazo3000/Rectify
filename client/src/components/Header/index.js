@@ -97,13 +97,13 @@ const Header = () => {
 
           <Typography
             variant="h5"
-            noWrap
+            wrap
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
-              flexGrow: 1200,
+              flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 500,
               letterSpacing: ".2rem",
@@ -125,7 +125,9 @@ const Header = () => {
             ))}
           </Box>
 
-          <div>
+          
+
+          <div >
             {Auth.loggedIn() ? (
               <>
                 <Link
@@ -194,7 +196,7 @@ const Header = () => {
             )}
           </div>
 
-          <Box sx={{ flexGrow: 0 }}></Box>
+          {/* <Box sx={{ flexGrow: 0 }}></Box> */}
         </Toolbar>
       </Container>
     </AppBar>
