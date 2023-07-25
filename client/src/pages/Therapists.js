@@ -6,6 +6,14 @@ import { Box, AppBar, Toolbar, Typography, Menu, Avatar, Button, MenuItem, Stack
 import Auth from "../utils/auth";
 import TherapistCard from "../components/TherapistCard";
 
+// Helper function to sanitize the therapist's name for use in a URL
+const sanitizeURL = (name) => {
+  return name
+    .toLowerCase() // Convert to lowercase
+    .replace(/\s+/g, "-") // Replace spaces with dashes
+    .replace(/[^a-z0-9-]/g, ""); // Remove any non-alphanumeric characters
+};
+
 const Therapists = ({ setIsLoggedIn }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null); // Updated state variable
   const [therapists, setTherapists] = useState([]); // Updated state variable
@@ -18,15 +26,19 @@ const Therapists = ({ setIsLoggedIn }) => {
     try {
       const response = await fetch("/api/therapists");
       const data = await response.json();
+      // Assuming the therapist data includes an 'image' property for each therapist.
+      // Update the data to include the image URL for each therapist.
+      const therapistsWithImages = data.map((therapist) => ({
+        ...therapist,
+        image: `/images/TherapistImages/${sanitizeURL(therapist.name)}.jpeg`,
+      }));
 
-      console.log("Therapists data:", data);
-
-      setTherapists(data);
+      setTherapists(therapistsWithImages);
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   const [addTherapist, { error, data }] = useMutation(ADD_THERAPIST);
 
 
@@ -37,6 +49,8 @@ const Therapists = ({ setIsLoggedIn }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+  
     
 
     if (selectedTherapist) {
@@ -66,9 +80,10 @@ const Therapists = ({ setIsLoggedIn }) => {
 
             
             {/* <ul className="list-group"> */}
-              {therapists.map((therapist) => (
-               
-                <TherapistCard key={therapist._id} name={therapist.name} specialty={therapist.specialty} _id={therapist._id} />
+            {therapists.map((therapist) => (
+              <TherapistCard  key={therapist._id} name={therapist.name} specialty={therapist.specialty} _id={therapist._id}
+              image={therapist.image} // Pass the image URL to the TherapistCard component
+              />
               ))}
             {/* </ul> */}
 

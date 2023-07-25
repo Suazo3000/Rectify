@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import TherapistCard from "../components/TherapistCard";
 import {
   MDBCol,
   MDBContainer,
@@ -9,6 +10,14 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from "mdb-react-ui-kit";
+
+// Helper function to sanitize the therapist's name for use in a URL
+const sanitizeURL = (name) => {
+  return name
+    .toLowerCase() // Convert to lowercase
+    .replace(/\s+/g, "-") // Replace spaces with dashes
+    .replace(/[^a-z0-9-]/g, ""); // Remove any non-alphanumeric characters
+};
 
 const Profile = () => {
   const { therapistId } = useParams();
@@ -100,6 +109,14 @@ const Profile = () => {
 
   return (
     <section style={{ backgroundColor: "#eee" }} className="mt-5">
+{/* {therapist && (
+        <TherapistCard
+          name={therapist.name}
+          specialty={therapist.specialty}
+          image={`/images/TherapistImages/${sanitizeURL(therapist.name)}.jpeg`}
+        />
+      )} */}
+
       <MDBContainer className="py-4">
         {therapist && (
           <MDBRow>
@@ -107,7 +124,9 @@ const Profile = () => {
               <MDBCard className="mb-4">
                 <MDBCardBody className="text-center">
                   <MDBCardImage
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                    src={`/images/TherapistImages/${sanitizeURL(
+                      therapist.name
+                    )}.jpeg`}
                     alt="avatar"
                     className="rounded-circle"
                     style={{ width: "141px" }}
