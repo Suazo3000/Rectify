@@ -1,12 +1,14 @@
+// Import required dependencies
 const mongoose = require('mongoose');
 const Therapist = require('../models/Therapist');
 
-
+// Connect to the MongoDB database
 mongoose.connect('mongodb://127.0.0.1:27017/rectify', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
+// An array containing 6ea therapists data
 const therapistData = [
   {
     name: 'Dr. Samantha Roberts',
@@ -52,6 +54,7 @@ const therapistData = [
   },
 ];
 
+// Function to seed the database with therapist data
 const seedTherapists = async () => {
   try {
     await Therapist.deleteMany();
@@ -64,5 +67,5 @@ const seedTherapists = async () => {
   }
 };
 
+// Call the seedTherapist function to start seeding process
 seedTherapists();
-// Compare this snippet from server/models/Therapist.js:

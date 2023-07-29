@@ -1,3 +1,4 @@
+// Import necessary components
 import React from "react";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -10,33 +11,29 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Stack from "@mui/material/Stack";
 
+// Define an empty array 'pages'
 const pages = [];
 
+// Define the 'Header' function
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  // Event handlers for opening and closing navigation and user menus
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // Function for logging out the user when 'LOGOUT' button is clicked
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
 
+  // Return JSX for rendering the header section of the application
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -57,8 +54,9 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography> 
+          </Typography>
 
+          {/* Box component for mobile navigation menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -69,6 +67,7 @@ const Header = () => {
               color="inherit"
             ></IconButton>
 
+            {/* Menu component for mobile navigation */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -87,6 +86,7 @@ const Header = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* Mapping through 'pages' (empty array, currently unused) */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -95,6 +95,7 @@ const Header = () => {
             </Menu>
           </Box>
 
+          {/* Typography component for 'Rectify' logo (only visible on mobile) */}
           <Typography
             variant="h5"
             wrap
@@ -112,7 +113,9 @@ const Header = () => {
             }}
           >
             Rectify
-          </Typography> 
+          </Typography>
+
+          {/* Box component for desktop navigation links */}
           <Box sx={{ flexGrow: 2, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -125,10 +128,10 @@ const Header = () => {
             ))}
           </Box>
 
-          
-
-          <div >
+          {/* Box for user authentication links */}
+          <div>
             {Auth.loggedIn() ? (
+              // Render links for authenticated users
               <>
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
@@ -150,7 +153,6 @@ const Header = () => {
                 >
                   <Button variant="outline">THERAPISTS</Button>
                 </Link>
-
                 <Link style={{ textDecoration: "none", color: "inherit" }}>
                   <Button
                     variant="outline"
@@ -158,11 +160,12 @@ const Header = () => {
                       logout(event);
                       window.location.href = "/";
                     }}
-                  >
+                    >
                     LOGOUT
                   </Button>
                 </Link>
               </>
+                    //* Render links for non-authenticated users */
             ) : (
               <>
                 <Link
@@ -196,11 +199,11 @@ const Header = () => {
             )}
           </div>
 
-          {/* <Box sx={{ flexGrow: 0 }}></Box> */}
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 
+// Export the 'Header' component
 export default Header;

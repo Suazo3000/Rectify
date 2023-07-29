@@ -1,8 +1,9 @@
+// Import necessary dependencies and css file
 import React from "react";
 import "../../utils/css/AboutSection.css";
 
+// Define the AboutSection function and return the component 
 const AboutSection = ({ heading, text, image, sections, key }) => {
-
   return (
     <section className={"aboutPage section" + (sections + 1)}>
       <div className="aboutText">
@@ -14,4 +15,5 @@ const AboutSection = ({ heading, text, image, sections, key }) => {
   );
 };
 
+// Export the AboutSection
 export default AboutSection;
